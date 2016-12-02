@@ -1,0 +1,20 @@
+<%= form_for @user do | f |%>
+<table class='table table-striped'>
+  <tr>
+    <td><%= f.label :name%></td>
+    <td><%= f.text_field :name%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :email%></td>
+    <td><%= f.email_field :email%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :phone%></td>
+    <td><%= f.text_field :phone%></td>
+  </tr>
+  <tr>
+  <td><%= f.submit%></td>
+</tr>
+</table>
+<%end%>
+<%= link_to "Go Back", users_path,:class=>'btn btn-primary'%>

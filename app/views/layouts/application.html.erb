@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MorningEstore</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Morning E_Store</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/users">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if session[:user_id].blank? %>
+          <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <%else%>
+           <li><a><%= "Logged in as #{disp_active_user}"%></a></li>
+        <%end%>
+        <li><%= link_to 'Logout', logout_users_path, method: :delete if session[:user_id].present? %></li>
+      </ul>
+    </div>
+  </nav>
+
+<% flash.each do |key, value| %>
+  <%=value%>
+<%end%>
+
+<%= yield %>
+
+</body>
+</html>
